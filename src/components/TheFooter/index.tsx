@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 
-const TheHeader: React.FC = () => {
+const TheFooter: React.FC = () => {
     return (
         <footer className='TheFooter'>
             Logistics App
@@ -9,4 +9,4 @@ const TheHeader: React.FC = () => {
     );
 }
 
-export default TheHeader;
+export default TheFooter;

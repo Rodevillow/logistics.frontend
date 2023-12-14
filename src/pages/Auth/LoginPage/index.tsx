@@ -1,17 +1,19 @@
 import React, {useState} from 'react';
+import {toast} from "react-toastify";
 
 import axios from "axios";
-
-import { connect, ConnectedProps } from 'react-redux';
-import { setAuthUser } from '../../../store/auth/authActions';
-import { RootState } from '../../../store/rootReducer';
 
 import UiInput from "../../../components/Ui/UiInput";
 import UiButton from "../../../components/Ui/UiButton";
 
+
+import {useToken} from "../../../hooks/useToken";
+
 import './index.scss';
 
 const LoginPage: React.FC = () => {
+
+    const {setTokenAndSave} = useToken()
 
     const [formData, setFormData] = useState({
         email: "",
@@ -38,14 +40,21 @@ const LoginPage: React.FC = () => {
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/login', formData);
 
-            console.log('response', response, 'response');
+            const status = response.status;
 
-            const token = "sdasdasdasdas";
-
-            setAuthUser({ token });
+            if (status === 200) {
+                const data = response.data;
+                setTokenAndSave(data.authorisation.token);
+                window.location.href = '/users'
+            }
 
         } catch (error: any) {
-            if (error.response && error.response.data && error.response.data.errors) {
+
+            if (error.response.status === 401) {
+                toast.error("Unauthorized!")
+            }
+
+            if (error.response.status === 422) {
                 const newErrorsFormData: Record<string, { errors: string[] }> = {...errorsFormData};
                 Object.keys(errorsFormData).forEach((key) => {
                     if (error.response.data.errors[key]) {
@@ -57,6 +66,7 @@ const LoginPage: React.FC = () => {
                 // @ts-ignore
                 setErrorsFormData(newErrorsFormData);
             }
+
             throw error;
         }
     }
@@ -107,16 +117,4 @@ const LoginPage: React.FC = () => {
     );
 }
 
-const mapStateToProps = (state: RootState) => ({
-    user: state.auth.user,
-});
-
-const mapDispatchToProps = {
-    setAuthUser,
-};
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
-type PropsFromRedux = ConnectedProps<typeof connector>;
-
-export default connector(LoginPage);
+export default LoginPage;

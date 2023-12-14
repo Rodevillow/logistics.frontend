@@ -11,6 +11,7 @@ import UiButton from "../../components/Ui/UiButton";
 
 const UsersPage: React.FC = () => {
 
+
     interface TransformedData {
         id: string;
         name: string;
@@ -57,7 +58,6 @@ const UsersPage: React.FC = () => {
             console.error('Error delete:', error);
         }
     }
-
     return (
         <div className='UsersPage'>
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import './index.scss';
 import {Link, useLocation} from "react-router-dom";
+import {useToken} from "../../hooks/useToken";
 
-const TheFooter: React.FC = () => {
+const TheHeader: React.FC = () => {
 
+    const {token, handleLogout} = useToken();
     const location = useLocation();
 
     const isLinkActive = (path: string) => location.pathname === path;
@@ -13,7 +15,7 @@ const TheFooter: React.FC = () => {
             <div className='container'>
                 <div className='TheHeader__wrapper'>
 
-                    <Link to='/' className='TheHeader__logo'>Logistics App</Link>
+                    <Link to='/users' className='TheHeader__logo'>Logistics App</Link>
 
                     <div className='TheHeader__menu'>
                         <div className='TheHeader__menu-left'>
@@ -45,18 +47,21 @@ const TheFooter: React.FC = () => {
                         </div>
 
                         <div className='TheHeader__menu-right'>
+                            {
+                                token ?
+                                    <Link onClick={handleLogout} to='/auth/login'
+                                          className={`link ${isLinkActive('/auth/login') ? 'active' : ''}`}
+                                    >
+                                        Logout
+                                    </Link>
+                                    :
+                                    <Link to='/auth/login'
+                                          className={`link ${isLinkActive('/auth/login') ? 'active' : ''}`}
+                                    >
+                                        Login
+                                    </Link>
+                            }
 
-                            <Link to='/auth/login'
-                                  className={`link ${isLinkActive('/auth/login') ? 'active' : ''}`}
-                            >
-                                Login
-                            </Link>
-
-                            <Link to='/auth/registration'
-                                  className={`link ${isLinkActive('/auth/registration') ? 'active' : ''}`}
-                            >
-                                Registration
-                            </Link>
 
                         </div>
                     </div>
@@ -66,4 +71,4 @@ const TheFooter: React.FC = () => {
     );
 }
 
-export default TheFooter;
+export default TheHeader;

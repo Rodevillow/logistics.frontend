@@ -1,14 +1,10 @@
-// App.tsx
 import React from 'react';
 // @ts-ignore
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 import DefaultLayout from "./layouts/DefaultLayout";
 
-import HomePage from './pages/HomePage';
-
 import LoginPage from "./pages/Auth/LoginPage";
-import RegistrationPage from "./pages/Auth/RegistrationPage";
 
 import ProductsPage from "./pages/ProductsPage";
 import ProductsAddPage from "./pages/ProductsPage/ProductsAddPage";
@@ -29,15 +25,18 @@ import UsersEditPage from "./pages/UsersPage/UsersEditPage";
 import './index.scss';
 
 
+
 const App: React.FC = () => {
+
+
+
     return (
         <Router>
             <Routes>
                 <Route element={<DefaultLayout />}>
-                    <Route path="/" element={<HomePage/>} />
+                    <Route path="/" element={<Navigate to="/users" />} />
 
                     <Route path="/auth/login" element={<LoginPage/>}/>
-                    <Route path="/auth/registration" element={<RegistrationPage/>}/>
 
                     <Route path="/users" element={<UsersPage/>}/>
                     <Route path="/users/add" element={<UsersAddPage/>}/>
@@ -59,6 +58,7 @@ const App: React.FC = () => {
         </Router>
     );
 }
+
 
 export default App;
 
