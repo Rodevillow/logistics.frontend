@@ -1,0 +1,58 @@
+.ProductsPage {
+
+  &__AddNewProduct {
+    margin-bottom: 20px;
+  }
+
+  .ProductItem {
+    border: 1px solid #1f2023;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+
+    &__Title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #6a8bb7;
+    }
+
+    &__Price {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    &__Provider { font-size: 14px; }
+    &__Storage { font-size: 14px; }
+    &__CreatedAt { font-size: 14px; }
+
+    &__Edit {
+      position: absolute;
+      right: 40px;
+      top: 20px;
+    }
+
+    &__Delete {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+  }
+}
+
+.ProductsAddPage {
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__price {
+    margin-bottom: 20px;
+  }
+}
+
+.ProductsEditPage {
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__price {
+    margin-bottom: 20px;
+  }
+}

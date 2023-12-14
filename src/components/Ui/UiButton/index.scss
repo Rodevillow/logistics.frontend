@@ -1,0 +1,15 @@
+.UiButton {
+  padding: 20px;
+  background-color: transparent;
+  border: 1px solid #6a8bb7;
+  color: #6a8bb7;
+  width: 100%;
+
+  &:hover {
+    opacity: .8;
+  }
+
+  &:active {
+    opacity: .4;
+  }
+}

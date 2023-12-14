@@ -1,0 +1,66 @@
+.UsersPage {
+
+  &__AddNewUser {
+    margin-bottom: 20px;
+  }
+
+  .UserItem {
+    border: 1px solid #1f2023;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+
+    &__Id {
+      color: #6a8bb7;
+    }
+
+    &__Name {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    &__Email {
+      font-weight: 700;
+    }
+
+    &__CreatedAt {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+    }
+
+    &__Edit {
+      position: absolute;
+      right: 40px;
+      top: 20px;
+    }
+
+    &__Delete {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+  }
+}
+
+.UsersAddPage {
+  &__name {
+    margin-bottom: 20px;
+  }
+  &__email {
+    margin-bottom: 20px;
+  }
+  &__password {
+    margin-bottom: 20px;
+  }
+}
+
+.UsersEditPage {
+  &__name {
+    margin-bottom: 20px;
+  }
+  &__email {
+    margin-bottom: 20px;
+  }
+}

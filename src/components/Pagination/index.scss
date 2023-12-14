@@ -1,0 +1,33 @@
+.Pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  &--disabled {
+    color: rgba(106, 139, 183, 0.42) !important;
+    border: 1px solid rgba(106, 139, 183, 0.42) !important;
+  }
+
+  button {
+    color: #6a8bb7;
+    border: 1px solid #6a8bb7;
+    background-color: transparent;
+    padding: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .8;
+    }
+
+    &:active {
+      opacity: .4;
+    }
+  }
+}

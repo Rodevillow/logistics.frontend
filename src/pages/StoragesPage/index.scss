@@ -1,0 +1,43 @@
+.StoragesPage {
+
+  &__AddNewStorage {
+    margin-bottom: 20px;
+  }
+
+  .StorageItem {
+    border: 1px solid #1f2023;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+
+    &__Address {
+      font-size: 20px;
+      font-weight: 700;
+      color: #6a8bb7;
+    }
+
+    &__Edit {
+      position: absolute;
+      right: 40px;
+      top: 20px;
+    }
+
+    &__Delete {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+  }
+}
+
+.StoragesAddPage {
+  &__address {
+    margin-bottom: 20px;
+  }
+}
+
+.StoragesEditPage {
+  &__address {
+    margin-bottom: 20px;
+  }
+}
