@@ -2,6 +2,10 @@ import React, {useState} from 'react';
 
 import axios from "axios";
 
+import { connect, ConnectedProps } from 'react-redux';
+import { setAuthUser } from '../../../store/auth/authActions';
+import { RootState } from '../../../store/rootReducer';
+
 import UiInput from "../../../components/Ui/UiInput";
 import UiButton from "../../../components/Ui/UiButton";
 
@@ -33,7 +37,13 @@ const LoginPage: React.FC = () => {
     const sendLoginRequest = async () => {
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/login', formData);
-            console.log(response.data);
+
+            console.log('response', response, 'response');
+
+            const token = "sdasdasdasdas";
+
+            setAuthUser({ token });
+
         } catch (error: any) {
             if (error.response && error.response.data && error.response.data.errors) {
                 const newErrorsFormData: Record<string, { errors: string[] }> = {...errorsFormData};
@@ -97,4 +107,16 @@ const LoginPage: React.FC = () => {
     );
 }
 
-export default LoginPage;
+const mapStateToProps = (state: RootState) => ({
+    user: state.auth.user,
+});
+
+const mapDispatchToProps = {
+    setAuthUser,
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(LoginPage);
